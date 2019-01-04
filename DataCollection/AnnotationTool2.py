@@ -9,14 +9,15 @@ import wx
 import wx.xrc
 import cv2
 
-###########################################################################
+##################################################################################################
 ## Class MyFrame
 ## Framework code generated with wxFormBuilder : http://www.wxformbuilder.org/
 ## You need python3 and wxPython, opencv-python module
 ## wxPython module: pip install wxPython
+## The size of display area can be modified by setting VideoDisplaySize parameter in main function
+## The surgeme list can also be easily modified.
 ## Before closing the window, you'd better pause the video.
-## The size of display area can be modified by set VideoDisplaySize parameter in main function
-###########################################################################
+##################################################################################################
 
 class AnnotationTool2 ( wx.Frame ):
     
