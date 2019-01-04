@@ -15,12 +15,13 @@ import cv2
 ## You need python3 and wxPython, opencv-python module
 ## wxPython module: pip install wxPython
 ## Before closing the window, you'd better pause the video.
+## The size of display area can be modified by set VideoDisplaySize parameter in main function
 ###########################################################################
 
 class AnnotationTool2 ( wx.Frame ):
     
 	def __init__( self, parent, video_path, write_path, VideoDisplaySize ):
-        # Define choice lists and initial parameters
+        # Define surgeme list and initial parameters
 		self.WindowWidth = VideoDisplaySize[0] + 440
 		self.WindowHeight = VideoDisplaySize[1] + 190
         
@@ -231,7 +232,7 @@ class AnnotationTool2 ( wx.Frame ):
 		    self.Inform_bar.SetValue('Please load the video!')
 		event.Skip()
 	
-    # Write an annotation to both file and display on annotation window
+    # Write an annotation to file and display the annotations on annotation window
 	def SurgemeWrite( self, event ):
 		if self.PROCESSING_FLAG:
             # if the complete annotation is not created
