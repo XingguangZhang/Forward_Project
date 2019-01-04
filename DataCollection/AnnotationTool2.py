@@ -371,6 +371,7 @@ class AnnotationTool2 ( wx.Frame ):
             
     # Event handle defined, my functions below
 	def MyImshow(self, width = 640, height = 480):
+		self.CurrentFrame = cv2.resize(self.CurrentFrame, (width, height), interpolation=cv2.INTER_CUBIC)
 		image = cv2.cvtColor(self.CurrentFrame, cv2.COLOR_BGR2RGB)
 		pic = wx.Bitmap.FromBuffer(width, height, image) 
 		self.m_bitmap.SetBitmap(pic)
