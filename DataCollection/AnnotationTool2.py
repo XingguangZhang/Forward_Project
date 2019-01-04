@@ -37,8 +37,7 @@ class AnnotationTool2 ( wx.Frame ):
 		self.AnnotationList = []
         
         #Define the framework
-		bSizer1 = wx.BoxSizer( wx.VERTICAL )
-		
+		bSizer1 = wx.BoxSizer( wx.VERTICAL )		
 		bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		self.m_load = wx.Button( self, wx.ID_ANY, u"Load", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -48,18 +47,14 @@ class AnnotationTool2 ( wx.Frame ):
                                 wx.DefaultPosition, wx.DefaultSize, wx.TE_CENTRE|wx.TE_READONLY )
 		self.Inform_bar.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
 		
-		bSizer2.Add( self.Inform_bar, 3, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
-			
-		bSizer1.Add( bSizer2, 1, wx.EXPAND, 5 )
-		
-		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"PlayVideo" ), wx.VERTICAL )
-		
+		bSizer2.Add( self.Inform_bar, 3, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )				
+		bSizer1.Add( bSizer2, 1, wx.EXPAND, 5 )		
+		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"PlayVideo" ), wx.VERTICAL )		
 		bSizer4 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		self.m_bitmap = wx.StaticBitmap( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.NullBitmap, \
                                   wx.DefaultPosition, wx.Size( 640,480 ), 0 )
-		bSizer4.Add( self.m_bitmap, 0, wx.ALL, 5 )
-		
+		bSizer4.Add( self.m_bitmap, 0, wx.ALL, 5 )		
 		bSizer5 = wx.BoxSizer( wx.VERTICAL )
 		
 		self.m_toggleBtn2 = wx.ToggleButton( sbSizer3.GetStaticBox(), wx.ID_ANY, \
@@ -116,36 +111,25 @@ class AnnotationTool2 ( wx.Frame ):
 		self.m_delete.SetMinSize( wx.Size( 130,30 ) )
 		self.m_delete.SetMaxSize( wx.Size( 160,40 ) )
 		
-		bSizer5.Add( self.m_delete, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		
-		bSizer4.Add( bSizer5, 1, wx.EXPAND, 5 )
-		
+		bSizer5.Add( self.m_delete, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )				
+		bSizer4.Add( bSizer5, 1, wx.EXPAND, 5 )		
 		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( sbSizer3.GetStaticBox(), wx.ID_ANY, u"Current annotations" ), wx.VERTICAL )
 		
 		self.AnnotationArea = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString,\
                                     wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE|wx.TE_READONLY )
 		self.AnnotationArea.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), 70, 90, 90, False, "Calibri" ) )
 		
-		sbSizer2.Add( self.AnnotationArea, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		
-		bSizer4.Add( sbSizer2, 1, wx.EXPAND, 5 )
-		
-		
-		sbSizer3.Add( bSizer4, 1, wx.EXPAND, 5 )
-		
-		
-		bSizer1.Add( sbSizer3, 15, wx.EXPAND, 5 )
-		
+		sbSizer2.Add( self.AnnotationArea, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )		
+		bSizer4.Add( sbSizer2, 1, wx.EXPAND, 5 )				
+		sbSizer3.Add( bSizer4, 1, wx.EXPAND, 5 )				
+		bSizer1.Add( sbSizer3, 15, wx.EXPAND, 5 )		
 		bSizer5 = wx.BoxSizer( wx.VERTICAL )
 		
 		self.m_slider = wx.Slider( self, wx.ID_ANY, 0, 0, 4000, wx.DefaultPosition, wx.Size( -1,40 ), wx.SL_LABELS|wx.SL_TOP )
 		self.m_slider.SetMinSize( wx.Size( -1,30 ) )
 		self.m_slider.SetMaxSize( wx.Size( -1,50 ) )
 		
-		bSizer5.Add( self.m_slider, 0, wx.ALL|wx.EXPAND, 5 )
-		
+		bSizer5.Add( self.m_slider, 0, wx.ALL|wx.EXPAND, 5 )		
 		bSizer6 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		self.m_buttonSlow = wx.Button( self, wx.ID_ANY, u"0.5X", wx.DefaultPosition, wx.Size( 180,-1 ), 0 )
@@ -161,15 +145,10 @@ class AnnotationTool2 ( wx.Frame ):
 		bSizer6.Add( self.m_buttonNext, 0, wx.ALL, 5 )
 		
 		self.m_buttonFast = wx.Button( self, wx.ID_ANY, u"2X", wx.DefaultPosition, wx.Size( 180,-1 ), 0 )
-		bSizer6.Add( self.m_buttonFast, 0, wx.ALL, 5 )
-		
-		
-		bSizer5.Add( bSizer6, 1, wx.EXPAND, 5 )
-		
-		
+		bSizer6.Add( self.m_buttonFast, 0, wx.ALL, 5 )				
+		bSizer5.Add( bSizer6, 1, wx.EXPAND, 5 )		
 		bSizer1.Add( bSizer5, 1, wx.EXPAND, 5 )
-		
-		
+				
 		self.SetSizer( bSizer1 )
 		self.Layout()
 		self.m_timer1 = wx.Timer()
@@ -360,7 +339,7 @@ class AnnotationTool2 ( wx.Frame ):
 	def OnSlow( self, event ):
 		if self.FrameTime <= 200:
 		    self.FrameTime = self.FrameTime * 2
-		    self.m_timer1.Start(self.FrameTime)
+		    if not self.PAUSE_FLAG: self.m_timer1.Start(self.FrameTime)
 		    self.Inform_bar.SetValue('Current fps:' + str(1000/self.FrameTime))
 		else:
 		    self.Inform_bar.SetValue('Minimum fps reached!')
@@ -370,7 +349,7 @@ class AnnotationTool2 ( wx.Frame ):
 	def OnFast( self, event ):
 		if self.FrameTime >= 10:
 		    self.FrameTime = self.FrameTime * 0.5
-		    self.m_timer1.Start(self.FrameTime)
+		    if not self.PAUSE_FLAG: self.m_timer1.Start(self.FrameTime)
 		    self.Inform_bar.SetValue('Current fps:' + str(1000/self.FrameTime))
 		else:
 		    self.Inform_bar.SetValue('Maximum fps reached!')
