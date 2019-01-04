@@ -14,6 +14,10 @@ import cv2
 ## Framework code generated with wxFormBuilder : http://www.wxformbuilder.org/
 ## You need python3 and wxPython, opencv-python module
 ## wxPython module: pip install wxPython
+##
+## Choose start and end frames of an annotation at first, then choose surgemes and S/F.
+## Press 'create annotation' to check the current annotation, this step is not necessary.
+## Once you have completed a single annotation, press 'Write to File' to save it and display it on the right.
 ## Before closing the window, you'd better pause the video.
 ###########################################################################
 
