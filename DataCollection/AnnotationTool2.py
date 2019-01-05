@@ -28,7 +28,7 @@ class AnnotationTool2 ( wx.Frame ):
         
 		self.ImWidth = VideoDisplaySize[0]
 		self.ImHeight = VideoDisplaySize[1]
-		self.surgeme = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']
+		self.surgeme = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7']
 		self.s_f = ['Success', 'Fail']
 		self.FrameNumber = 0
 		self.FrameTime = 33
