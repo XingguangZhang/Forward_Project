@@ -17,6 +17,8 @@ import cv2
 ## The size of display area can be modified by setting VideoDisplaySize parameter in main function
 ## The surgeme list can also be easily editted.
 ## Left and right arrow on keyboard can be used to show the last and next frame. 
+## Create annotation button is not necessary before 'write to file' action, but if you would like 
+## to edit the annotation, you can create it and then edit in the text area.
 ## Before closing the window, you'd better pause the video.
 ##################################################################################################
 
@@ -102,7 +104,7 @@ class AnnotationTool2 ( wx.Frame ):
 		bSizer5.Add( self.m_Anno, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		self.m_Annotext = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, \
-                                wx.EmptyString, wx.DefaultPosition, wx.Size( 180,-1 ), wx.TE_CENTRE|wx.TE_READONLY )
+                                wx.EmptyString, wx.DefaultPosition, wx.Size( 180,-1 ), wx.TE_CENTRE)
 		self.m_Annotext.SetFont( wx.Font( 14, 70, 90, 90, False, "Century" ) )
 		self.m_Annotext.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
 		self.m_Annotext.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
@@ -256,6 +258,7 @@ class AnnotationTool2 ( wx.Frame ):
 		        self.OneAnnotation = ''
             # else if the complete annotation was created by 'create annotation' function
 		    elif len(self.OneRow) == 4:
+		        self.OneAnnotation = self.m_Annotext.GetLineText(0)
 		        self.AnnotationList.append(self.OneAnnotation + '\n')
 		        self.AnnotationArea.AppendText(self.AnnotationList[-1])
 		        self.MyFileWriting()  
