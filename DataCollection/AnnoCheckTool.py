@@ -67,7 +67,8 @@ class AnnoCheckTool ( wx.Frame ):
 		
 		bSizer4 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.m_bitmap = wx.StaticBitmap( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.Size( 960,540 ), 0 )
+		self.m_bitmap = wx.StaticBitmap( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.NullBitmap, 、
+						wx.DefaultPosition, wx.Size( 960,540 ), 0 )
 		bSizer4.Add( self.m_bitmap, 0, wx.ALL, 5 )
 		
 		bSizer5 = wx.BoxSizer( wx.VERTICAL )
@@ -124,7 +125,8 @@ class AnnoCheckTool ( wx.Frame ):
 		
 		sbSizer2.Add( self.AnnotationArea, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
-		self.m_delete = wx.Button( sbSizer2.GetStaticBox(), wx.ID_ANY, u"Delete Last Record", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_delete = wx.Button( sbSizer2.GetStaticBox(), wx.ID_ANY, u"Delete Last Record", 、
+					  wx.DefaultPosition, wx.DefaultSize, 0 )
 		sbSizer2.Add( self.m_delete, 0, wx.ALL|wx.EXPAND, 5 )
 				
 		bSizer4.Add( sbSizer2, 1, wx.EXPAND, 5 )		
@@ -247,6 +249,8 @@ class AnnoCheckTool ( wx.Frame ):
 		        OneAnnoCheck = Selected + ' ' + IsAgree + ' ' +  Comment + '\n'
 		        if OneAnnoCheck not in self.AnnoMark:
 		            self.AnnoMark.append(OneAnnoCheck)
+		        else:
+		            self.Inform_bar.SetValue('The record was added, do not add again!')      
 		    else:
 		        OneAnnoCheck = Selected + ' ' + IsAgree + '\n'
 		        if OneAnnoCheck not in self.AnnoMark:
@@ -402,6 +406,7 @@ class AnnoCheckTool ( wx.Frame ):
 if __name__ =='__main__':
     # The size of display area and the path of video file, the annotation file will be in the same dictionary will the video file
     VideoDisplaySize = [960, 540] #For Taurus
+#    VideoDisplaySize = [960, 700] #For Taurus Simulator  
     app = wx.App()
     frame = AnnoCheckTool(None, VideoDisplaySize)
     frame.Show()
